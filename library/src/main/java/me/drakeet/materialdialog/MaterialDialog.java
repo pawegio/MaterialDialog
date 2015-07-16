@@ -49,6 +49,7 @@ public class MaterialDialog {
     private int                               mBackgroundResId;
     private View                              mMessageContentView;
     private DialogInterface.OnDismissListener mOnDismissListener;
+    private boolean mCancelable = false;
 
     public MaterialDialog(Context context) {
         this.mContext = context;
@@ -97,6 +98,10 @@ public class MaterialDialog {
 
     public void dismiss() {
         mAlertDialog.dismiss();
+    }
+
+    public void setCancelable(boolean isCancelable) {
+        mCancelable = isCancelable;
     }
 
     private int dip2px(float dpValue) {
@@ -254,6 +259,7 @@ public class MaterialDialog {
 
         private Builder() {
             mAlertDialog = new AlertDialog.Builder(mContext).create();
+            mAlertDialog.setCancelable(mCancelable);
             mAlertDialog.show();
 
             mAlertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
@@ -479,7 +485,6 @@ public class MaterialDialog {
             mAlertDialog.setCanceledOnTouchOutside(canceledOnTouchOutside);
         }
     }
-<<<<<<< HEAD
 
     /**
      * 动态测量listview-Item的高度
@@ -505,6 +510,3 @@ public class MaterialDialog {
     }
 
 }
-=======
-}
->>>>>>> origin/master
