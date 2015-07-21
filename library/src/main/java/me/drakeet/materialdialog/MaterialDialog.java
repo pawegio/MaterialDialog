@@ -50,6 +50,7 @@ public class MaterialDialog {
     private View                              mMessageContentView;
     private DialogInterface.OnDismissListener mOnDismissListener;
     private boolean mCancelable = false;
+    private Integer mWidth;
 
     public MaterialDialog(Context context) {
         this.mContext = context;
@@ -102,6 +103,10 @@ public class MaterialDialog {
 
     public void setCancelable(boolean isCancelable) {
         mCancelable = isCancelable;
+    }
+
+    public void setWidth(int width) {
+        mWidth = width;
     }
 
     private int dip2px(float dpValue) {
@@ -261,6 +266,9 @@ public class MaterialDialog {
             mAlertDialog = new AlertDialog.Builder(mContext).create();
             mAlertDialog.setCancelable(mCancelable);
             mAlertDialog.show();
+            if (mWidth != null) {
+                mAlertDialog.getWindow().getAttributes().width = mWidth;
+            }
 
             mAlertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
             mAlertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
