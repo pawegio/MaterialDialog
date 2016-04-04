@@ -245,6 +245,10 @@ public class MaterialDialog {
         mNegativeButton.setVisibility(visibility);
     }
 
+    public void setPositiveButtonVisibility(int visibility) {
+        mPositiveButton.setVisibility(visibility);
+    }
+
     public MaterialDialog setCanceledOnTouchOutside(boolean cancel) {
         this.mCancel = cancel;
         if (mBuilder != null) {
